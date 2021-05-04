@@ -1,0 +1,15 @@
+#docker-compose-with-landing.yml
+version: "3.2"
+services:
+
+  landing:
+    container_name: landing
+    build: '../Landing-Page/'
+    restart: always
+    ports:
+      - "8003:80"
+    networks:
+      - niagahoster
+
+networks:
+  niagahoster:
