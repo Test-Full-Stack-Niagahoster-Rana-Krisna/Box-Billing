@@ -55,12 +55,6 @@ ___
 
 ## Usage
 
-### Running Apps
-```bash
-php -S localhost:8004
-```
-akses di http://localhost:8004
-
 ## Running as Docker
 
 Untuk menjalankan applikasi dalam bentuk docker, build __image__ dengan menggunakan
