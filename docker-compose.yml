@@ -1,0 +1,35 @@
+#docker-compose.yml
+version: "3.2"
+services:
+  boxbilling:
+    container_name: boxbilling
+    build: './'
+    environment:
+      DB_HOST : db
+      DB_NAME : ${DB_NAME}
+      DB_USER : ${DB_USER}
+      DB_PASS : ${DB_PASS}
+    ports:
+      - "8004:80"
+    networks:
+      - niagahoster
+    links:
+        - db
+
+  db:
+    container_name: db
+    image: mariadb:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    networks:
+      - niagahoster
+    environment:
+      MYSQL_ROOT_PASSWORD : ${DB_PASS}
+    volumes:
+      # - ./boxbilling.sql:/docker-entrypoint-initdb.d/boxbilling.sql
+      - default:/var/lib/mysql
+
+networks:
+  niagahoster:
+volumes:
+  default:
